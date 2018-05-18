@@ -158,7 +158,7 @@ public class Bank implements BankProcesses, Serializable {
         }
     }
 
-    private void saveBank(){
+    public void saveBank(){
         try {
             FileOutputStream fileOutput = new FileOutputStream("bank");
             ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);

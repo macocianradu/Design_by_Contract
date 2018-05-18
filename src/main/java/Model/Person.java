@@ -47,6 +47,6 @@ public class Person implements Observer, Serializable {
     }
 
     public void update(String s) {
-        System.out.println("Person id: " + this.id + "notified: " + s);
+        System.out.println(s + " notified: " + "Person id: " + this.id);
     }
 }

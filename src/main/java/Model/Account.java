@@ -31,12 +31,12 @@ public abstract class Account implements Observable, Serializable {
 
     public void addHolder(Person p){
         this.holders.add(p);
-        notifyObserver("Account: " + this.id + " - Added holder id: " + p.getId() + "name: " + p.getName());
+        notifyObserver("Account: " + this.id + " - Added holder id: " + p.getId() + " name: " + p.getName());
     }
 
     public void removeHolder(Person p){
         this.holders.remove(p);
-        notifyObserver("Account: " + this.id + " - Removed holder id: " + p.getId() + "name: " + p.getName());
+        notifyObserver("Account: " + this.id + " - Removed holder id: " + p.getId() + " name: " + p.getName());
     }
 
     public int getId(){
@@ -64,8 +64,8 @@ public abstract class Account implements Observable, Serializable {
         return this.mainHolder;
     }
 
-    public int getHolders(){
-        return this.holders.size();
+    public ArrayList<Person> getHolders(){
+        return this.holders;
     }
 
     public void addObserver(Observer o) {

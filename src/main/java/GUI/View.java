@@ -1,8 +1,6 @@
 package GUI;
 
-import Model.Account;
 import Model.Bank;
-import Model.Person;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class View {
     private JFrame frame;

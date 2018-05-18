@@ -43,10 +43,12 @@ public class Persons {
             persons = View.createTable(bank.showPersons());
         }
         persons.setDefaultEditor(Object.class, null);
+        JScrollPane pane = new JScrollPane(persons);
+        pane.setPreferredSize(new Dimension(120, 120));
 
         c.anchor = GridBagConstraints.PAGE_START;
-        c.weighty = 0.5;
-        c.weightx = 0.5;
+        c.weighty = 1;
+        c.weightx = 1;
         panel.add(addPerson, c);
         c.gridx = 1;
         panel.add(editPerson, c);
@@ -57,7 +59,11 @@ public class Persons {
         c.anchor = GridBagConstraints.CENTER;
         c.gridwidth = 3;
         c.gridheight = 2;
-        panel.add(persons, c);
+        c.weighty = 0.5;
+        c.weightx = 0.5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        panel.add(pane, c);
+        c.fill = GridBagConstraints.NONE;
         c.gridheight = 1;
         c.gridx = 0;
         c.gridy ++;
