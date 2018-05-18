@@ -1,8 +1,10 @@
 package Model;
 
-import java.util.ArrayList;
+import ObserverDP.Observer;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Observer, Serializable {
     private int id;
     private String name;
     private String address;
@@ -37,5 +39,14 @@ public class Person {
 
     public String getAddress(){
         return this.address;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.id;
+    }
+
+    public void update(String s) {
+        System.out.println("Person id: " + this.id + "notified: " + s);
     }
 }

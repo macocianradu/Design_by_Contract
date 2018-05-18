@@ -8,11 +8,22 @@ import static java.util.Calendar.YEAR;
 
 public class SavingsAccount extends Account {
 
+    int id;
+    private Person mainHolder;
+    private ArrayList<Person> holders;
+    private Calendar startDate;
+    private Calendar endDate;
+    private double budget;
     private Boolean deposited;
 
     public SavingsAccount(int id, Person mainHolder, ArrayList<Person> holders, Calendar startDate, Calendar endDate, int budget) {
         super(id, mainHolder, holders, startDate, endDate, budget);
-        this.deposited = false;
+        if(this.budget == 0){
+            this.deposited = false;
+        }
+        else {
+            this.deposited = true;
+        }
     }
 
     public void setBudget(){
@@ -31,9 +42,12 @@ public class SavingsAccount extends Account {
         return rate;
     }
 
-    public double withdraw(){
+    public double withdraw(double sum){
         this.setBudget();
-        return this.getBudget();
+        double money = this.getBudget();
+        this.budget = 0;
+        this.notifyObserver("Account: " + this.id + " - Money Withdrawn sum: " + money);
+        return money;
     }
 
     public void deposit(double sum){
@@ -43,6 +57,7 @@ public class SavingsAccount extends Account {
         else{
             this.deposited = true;
             this.setBudget(sum);
+            this.notifyObserver("Account: " + this.id + " - Deposited sum: " + sum);
         }
     }
 }

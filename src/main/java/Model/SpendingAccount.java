@@ -8,11 +8,20 @@ public class SpendingAccount extends Account {
         super(id, mainHolder, holders, startDate, endDate, budget);
     }
 
-    public void deposit(int sum){
+    public void deposit(double sum){
         this.setBudget(this.getBudget() + sum);
+        this.notifyObserver("Account: " + this.getId() + " - Money Deposited sum: " + sum);
     }
 
-    public void withdraw(int sum){
-        this.setBudget(this.getBudget() - sum);
+    public double withdraw(double sum){
+        if(sum > this.getBudget()){
+            System.out.println("Error not enough funds!");
+            return 0;
+        }
+        else {
+            this.setBudget(this.getBudget() - sum);
+            this.notifyObserver("Account: " + this.getId() + " - Money Withdrawn sum: " + sum);
+            return sum;
+        }
     }
 }
